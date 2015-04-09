@@ -13,6 +13,7 @@
 		6CAA41001AD522A6006E0379 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6CAA40FF1AD522A6006E0379 /* Images.xcassets */; };
 		6CAA41031AD522A6006E0379 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6CAA41011AD522A6006E0379 /* LaunchScreen.xib */; };
 		6CAA410F1AD522A6006E0379 /* IcloudKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CAA410E1AD522A6006E0379 /* IcloudKitTests.swift */; };
+		6CAA411A1AD522C5006E0379 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6CAA41191AD522C5006E0379 /* CloudKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +37,8 @@
 		6CAA41081AD522A6006E0379 /* IcloudKitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = IcloudKitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6CAA410D1AD522A6006E0379 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6CAA410E1AD522A6006E0379 /* IcloudKitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IcloudKitTests.swift; sourceTree = "<group>"; };
+		6CAA41181AD522B1006E0379 /* IcloudKit.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = IcloudKit.entitlements; sourceTree = "<group>"; };
+		6CAA41191AD522C5006E0379 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -43,6 +46,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6CAA411A1AD522C5006E0379 /* CloudKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -59,6 +63,7 @@
 		6CAA40EA1AD522A6006E0379 = {
 			isa = PBXGroup;
 			children = (
+				6CAA41191AD522C5006E0379 /* CloudKit.framework */,
 				6CAA40F51AD522A6006E0379 /* IcloudKit */,
 				6CAA410B1AD522A6006E0379 /* IcloudKitTests */,
 				6CAA40F41AD522A6006E0379 /* Products */,
@@ -77,6 +82,7 @@
 		6CAA40F51AD522A6006E0379 /* IcloudKit */ = {
 			isa = PBXGroup;
 			children = (
+				6CAA41181AD522B1006E0379 /* IcloudKit.entitlements */,
 				6CAA40F81AD522A6006E0379 /* AppDelegate.swift */,
 				6CAA40FA1AD522A6006E0379 /* ViewController.swift */,
 				6CAA40FC1AD522A6006E0379 /* Main.storyboard */,
@@ -161,6 +167,12 @@
 				TargetAttributes = {
 					6CAA40F21AD522A6006E0379 = {
 						CreatedOnToolsVersion = 6.3;
+						DevelopmentTeam = 44P4G4HCCY;
+						SystemCapabilities = {
+							com.apple.iCloud = {
+								enabled = 1;
+							};
+						};
 					};
 					6CAA41071AD522A6006E0379 = {
 						CreatedOnToolsVersion = 6.3;
@@ -340,9 +352,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = IcloudKit/IcloudKit.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = IcloudKit/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -350,9 +366,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = IcloudKit/IcloudKit.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = IcloudKit/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};
@@ -409,6 +429,7 @@
 				6CAA41141AD522A6006E0379 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		6CAA41151AD522A6006E0379 /* Build configuration list for PBXNativeTarget "IcloudKitTests" */ = {
 			isa = XCConfigurationList;
@@ -417,6 +438,7 @@
 				6CAA41171AD522A6006E0379 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
