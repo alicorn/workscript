@@ -29,29 +29,32 @@ class ViewController: UIViewController,UITableViewDataSource, UITableViewDelegat
     func loadTasks() {
         
         // Create the query to load the tasks
-        var query = CKQuery(recordType: "test", predicate: NSPredicate(format: "TRUEPREDICATE"))
+        let truePredicate = NSPredicate(value: true)
+        var query = CKQuery(recordType: "test", predicate: truePredicate)
         var queryOperation = CKQueryOperation(query: query)
         
         println("Start fetch")
+
         
         // Fetch the items for the record
         func fetched(record: CKRecord!) {
             items.append(record)
+            println("abc")
         }
         
         queryOperation.recordFetchedBlock = fetched
         
         // Finish fetching the items for the record
-        func fetchFinished(cursor: CKQueryCursor?, error: NSError?) {
+       func fetchFinished(cursor: CKQueryCursor?, error: NSError?) {
             
             if error != nil {
-                println(error)
+                println("\(error) \(error)")
             } else {
                 println("End fetch")
             }
             
             // Print items array contents
-            println(items)
+            println("\(items)  \(tasks.count)")
             
             // Add contents of the item array to the tasks array
             tasks.addObjectsFromArray(items)
@@ -67,13 +70,16 @@ class ViewController: UIViewController,UITableViewDataSource, UITableViewDelegat
         var database: CKDatabase = CKContainer.defaultContainer().privateCloudDatabase
         database.addOperation(queryOperation)
         
+
+        
+        
     }
     
     // Function to delete all tasks in the UITableView and database
     func deleteTasks() {
         
         // Create the query to load the tasks
-        var query = CKQuery(recordType: "test", predicate: NSPredicate(format: "TRUEPREDICATE"))
+        var query = CKQuery(recordType: "test", predicate: nil)
         var queryOperation = CKQueryOperation(query: query)
         println("Begin deleting tasks")
         
